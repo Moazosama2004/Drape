@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */; };
 		41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E902FEFCE2A00521C14 /* ContentView.swift */; };
-		41B03E932FEFCE2A00521C14 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E922FEFCE2A00521C14 /* Item.swift */; };
 		41B03E952FEFCE2E00521C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B03E942FEFCE2E00521C14 /* Assets.xcassets */; };
 		41B03E982FEFCE2E00521C14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B03E972FEFCE2E00521C14 /* Preview Assets.xcassets */; };
 		41B03EA22FEFCE2F00521C14 /* DrapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EA12FEFCE2F00521C14 /* DrapeTests.swift */; };
@@ -38,7 +37,6 @@
 		41B03E8B2FEFCE2A00521C14 /* Drape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeApp.swift; sourceTree = "<group>"; };
 		41B03E902FEFCE2A00521C14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		41B03E922FEFCE2A00521C14 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		41B03E942FEFCE2E00521C14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41B03E972FEFCE2E00521C14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41B03E9D2FEFCE2F00521C14 /* DrapeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrapeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 			children = (
 				41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */,
 				41B03E902FEFCE2A00521C14 /* ContentView.swift */,
-				41B03E922FEFCE2A00521C14 /* Item.swift */,
 				41B03E942FEFCE2E00521C14 /* Assets.xcassets */,
 				41B03E962FEFCE2E00521C14 /* Preview Content */,
 			);
@@ -218,6 +215,9 @@
 				Base,
 			);
 			mainGroup = 41B03E822FEFCE2A00521C14;
+			packageReferences = (
+				41B03EBA2FEFD2C300521C14 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 41B03E8C2FEFCE2A00521C14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
-				41B03E932FEFCE2A00521C14 /* Item.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +585,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		41B03EBA2FEFD2C300521C14 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 41B03E832FEFCE2A00521C14 /* Project object */;
 }
