@@ -94,6 +94,8 @@
 		41B03E8D2FEFCE2A00521C14 /* Drape */ = {
 			isa = PBXGroup;
 			children = (
+				41B03EBB2FEFD90600521C14 /* Core */,
+				41B03EBC2FEFD90E00521C14 /* Modules */,
 				41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */,
 				41B03E902FEFCE2A00521C14 /* ContentView.swift */,
 				41B03E942FEFCE2E00521C14 /* Assets.xcassets */,
@@ -125,6 +127,68 @@
 				41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */,
 			);
 			path = DrapeUITests;
+			sourceTree = "<group>";
+		};
+		41B03EBB2FEFD90600521C14 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				41B03EC22FEFDA9B00521C14 /* Storage */,
+				41B03EC12FEFD99B00521C14 /* DI */,
+				41B03EBD2FEFD93300521C14 /* Network */,
+				41B03EC02FEFD97600521C14 /* Extenstions */,
+				41B03EBF2FEFD96F00521C14 /* Utils */,
+				41B03EBE2FEFD94300521C14 /* Components */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		41B03EBC2FEFD90E00521C14 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		41B03EBD2FEFD93300521C14 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		41B03EBE2FEFD94300521C14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		41B03EBF2FEFD96F00521C14 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		41B03EC02FEFD97600521C14 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		41B03EC12FEFD99B00521C14 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		41B03EC22FEFDA9B00521C14 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
