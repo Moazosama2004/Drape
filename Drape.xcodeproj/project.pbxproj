@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */; };
+		3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */; };
+		3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6E002FEFEB5E002FBB9B /* onboarding.png */; };
+		3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6E042FEFEF1B002FBB9B /* OnBoardingScreen.swift */; };
 		41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */; };
 		41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E902FEFCE2A00521C14 /* ContentView.swift */; };
 		41B03E952FEFCE2E00521C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B03E942FEFCE2E00521C14 /* Assets.xcassets */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drape_icon.png; sourceTree = "<group>"; };
+		3EFC6E002FEFEB5E002FBB9B /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding.png; sourceTree = "<group>"; };
+		3EFC6E042FEFEF1B002FBB9B /* OnBoardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScreen.swift; sourceTree = "<group>"; };
 		41B03E8B2FEFCE2A00521C14 /* Drape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeApp.swift; sourceTree = "<group>"; };
 		41B03E902FEFCE2A00521C14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EFC6DFC2FEFE44E002FBB9B /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		3EFC6E032FEFEEEC002FBB9B /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				3EFC6E042FEFEF1B002FBB9B /* OnBoardingScreen.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 		41B03E822FEFCE2A00521C14 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +120,8 @@
 		41B03E8D2FEFCE2A00521C14 /* Drape */ = {
 			isa = PBXGroup;
 			children = (
+				3EFC6E032FEFEEEC002FBB9B /* OnBoarding */,
+				3EFC6DFC2FEFE44E002FBB9B /* Splash */,
 				9F4DDE682FF06F3700B9D2F0 /* Components */,
 				41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */,
 				41B03E902FEFCE2A00521C14 /* ContentView.swift */,
@@ -108,6 +134,8 @@
 		41B03E962FEFCE2E00521C14 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */,
+				3EFC6E002FEFEB5E002FBB9B /* onboarding.png */,
 				41B03E972FEFCE2E00521C14 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -245,6 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */,
+				3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */,
 				41B03E982FEFCE2E00521C14 /* Preview Assets.xcassets in Resources */,
 				41B03E952FEFCE2E00521C14 /* Assets.xcassets in Resources */,
 			);
@@ -271,9 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
+				3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
