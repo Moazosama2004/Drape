@@ -14,6 +14,7 @@
 		41B03EA22FEFCE2F00521C14 /* DrapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EA12FEFCE2F00521C14 /* DrapeTests.swift */; };
 		41B03EAC2FEFCE2F00521C14 /* DrapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */; };
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
+		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		41B03EA72FEFCE2F00521C14 /* DrapeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrapeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITests.swift; sourceTree = "<group>"; };
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */,
+				41B03EC82FEFE34200521C14 /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
