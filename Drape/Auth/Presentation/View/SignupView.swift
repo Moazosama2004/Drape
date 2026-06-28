@@ -12,8 +12,19 @@ struct SignupView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @State private var fullNameState: TextFieldState = .normal
+    @State private var emailState: TextFieldState = .normal
+    @State private var passwordState: TextFieldState = .normal
+    
+    @State private var fullNameError = "Please enter your full name"
+    @State private var emailError = "Please enter a valid email address"
+    @State private var passwordError = "Password must be at least 8 characters"
+    
+    private var isFormValid: Bool {
+        fullNameState == .success && emailState == .success && passwordState == .success
+    }
+    
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 24) {
             headerSection
             formSection
@@ -25,8 +36,45 @@ struct SignupView: View {
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 28)
-        
-        
+    }
+    
+    // Validation -- move to VM later
+    private func validateFullName() {
+        let trimmed = fullName.trimmingCharacters(in: .whitespaces)
+        if trimmed.isEmpty {
+            fullNameState = .error
+            fullNameError = "Please enter your full name"
+        } else if trimmed.count < 2 {
+            fullNameState = .error
+            fullNameError = "Name must be at least 2 characters"
+        } else {
+            fullNameState = .success
+        }
+    }
+    
+    private func validateEmail() {
+        let regex = #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
+        if email.isEmpty {
+            emailState = .error
+            emailError = "Please enter your email address"
+        } else if email.range(of: regex, options: .regularExpression) == nil {
+            emailState = .error
+            emailError = "Please enter a valid email address"
+        } else {
+            emailState = .success
+        }
+    }
+    
+    private func validatePassword() {
+        if password.isEmpty {
+            passwordState = .error
+            passwordError = "Please enter a password"
+        } else if password.count < 8 {
+            passwordState = .error
+            passwordError = "Password must be at least 8 characters"
+        } else {
+            passwordState = .success
+        }
     }
     
     private var headerSection: some View {
@@ -42,73 +90,54 @@ struct SignupView: View {
     
     private var formSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Full Name")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your full name", text: $fullName)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Email")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your email address", text: $email)
-                    .keyboardType(.emailAddress)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Password")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your password", text: $password)
-                    .textInputAutocapitalization(.never)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-                
-            }
+            CustomTextField(
+                title: "Full Name",
+                errorMessage: fullNameError,
+                placeHolder: "Enter your full name",
+                textFieldValue: $fullName,
+                state: $fullNameState
+            )
+            .onChange(of: fullName) { validateFullName() }
+
+            CustomTextField(
+                title: "Email",
+                errorMessage: emailError,
+                placeHolder: "Enter your email address",
+                textFieldValue: $email,
+                state: $emailState
+            )
+            .onChange(of: email) { validateEmail() }
+
+            CustomTextField(
+                title: "Password",
+                isPassword: true,
+                errorMessage: passwordError,
+                placeHolder: "Enter your password",
+                textFieldValue: $password,
+                state: $passwordState
+            )
+            .onChange(of: password) { validatePassword() }
+
         }
     }
     
     private var termsSection: some View {
-        Text("By signing up you agree to our Terms, Privacy Policy, and Cookie Use") // underline from terms !!!
+        Text("By signing up you agree to our Terms, Privacy Policy, and Cookie Use")
             .font(.system(size: 13))
             .foregroundColor(.gray)
             .fixedSize(horizontal: false, vertical: true)
     }
     
-    //TODO will replace it after yusif finish buttons
     private var createButton: some View {
-        Button(action: {
-            
-        }) {
-            Text("Create an Account")
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .background(Color.gray.opacity(0.45))
-                .cornerRadius(10)
-        }
+        return CustomButton(
+            type: .primary,
+            text: "Create an Account",
+            action: {
+                
+            },
+            status: isFormValid ? .enable : .disable
+        )
     }
     
     private var dividerSection: some View {
@@ -129,33 +158,33 @@ struct SignupView: View {
     
     private var socialButtons: some View {
         VStack(spacing: 14) {
-            Button(action: {
-                
-            }) {
-                
-                Text("Sign Up with Google")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
+            CustomButton(
+                type: .custom(textColor: .black, buttonColor: .white),
+                text: "Sign Up with Google",
+                action: {
+                    
+                },
+                status: .enable,
+                leading: Image("google")
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+            )
             
-            Button(action: {
-                
-            }) {
-                Text("Sign Up with Facebook")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
+            CustomButton(
+                type: .custom(textColor: .white, buttonColor: .blue),
+                text: "Sign Up with Facebook",
+                action: {
+                    
+                },
+                status: .enable,
+                leading: Image("facebook")
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+            )
         }
     }
     
