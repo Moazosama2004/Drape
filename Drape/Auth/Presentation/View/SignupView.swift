@@ -8,21 +8,7 @@
 import SwiftUI
 
 struct SignupView: View {
-    @State private var fullName = ""
-    @State private var email = ""
-    @State private var password = ""
-    
-    @State private var fullNameState: TextFieldState = .normal
-    @State private var emailState: TextFieldState = .normal
-    @State private var passwordState: TextFieldState = .normal
-    
-    @State private var fullNameError = "Please enter your full name"
-    @State private var emailError = "Please enter a valid email address"
-    @State private var passwordError = "Password must be at least 8 characters"
-    
-    private var isFormValid: Bool {
-        fullNameState == .success && emailState == .success && passwordState == .success
-    }
+    @State private var viewModel = SignupViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -37,45 +23,7 @@ struct SignupView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 28)
     }
-    
-    // Validation -- move to VM later
-    private func validateFullName() {
-        let trimmed = fullName.trimmingCharacters(in: .whitespaces)
-        if trimmed.isEmpty {
-            fullNameState = .error
-            fullNameError = "Please enter your full name"
-        } else if trimmed.count < 2 {
-            fullNameState = .error
-            fullNameError = "Name must be at least 2 characters"
-        } else {
-            fullNameState = .success
-        }
-    }
-    
-    private func validateEmail() {
-        let regex = #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
-        if email.isEmpty {
-            emailState = .error
-            emailError = "Please enter your email address"
-        } else if email.range(of: regex, options: .regularExpression) == nil {
-            emailState = .error
-            emailError = "Please enter a valid email address"
-        } else {
-            emailState = .success
-        }
-    }
-    
-    private func validatePassword() {
-        if password.isEmpty {
-            passwordState = .error
-            passwordError = "Please enter a password"
-        } else if password.count < 8 {
-            passwordState = .error
-            passwordError = "Password must be at least 8 characters"
-        } else {
-            passwordState = .success
-        }
-    }
+       
     
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -93,31 +41,31 @@ struct SignupView: View {
             
             CustomTextField(
                 title: "Full Name",
-                errorMessage: fullNameError,
+                errorMessage: viewModel.fullNameError,
                 placeHolder: "Enter your full name",
-                textFieldValue: $fullName,
-                state: $fullNameState
+                textFieldValue: $viewModel.fullName,
+                state: $viewModel.fullNameState
             )
-            .onChange(of: fullName) { validateFullName() }
+            .onChange(of: viewModel.fullName) { viewModel.validateFullName()}
 
             CustomTextField(
                 title: "Email",
-                errorMessage: emailError,
+                errorMessage: viewModel.emailError,
                 placeHolder: "Enter your email address",
-                textFieldValue: $email,
-                state: $emailState
+                textFieldValue: $viewModel.email,
+                state: $viewModel.emailState
             )
-            .onChange(of: email) { validateEmail() }
+            .onChange(of: viewModel.email) { viewModel.validateEmail() }
 
             CustomTextField(
                 title: "Password",
                 isPassword: true,
-                errorMessage: passwordError,
+                errorMessage: viewModel.passwordError,
                 placeHolder: "Enter your password",
-                textFieldValue: $password,
-                state: $passwordState
+                textFieldValue: $viewModel.password,
+                state: $viewModel.passwordState
             )
-            .onChange(of: password) { validatePassword() }
+            .onChange(of: viewModel.password) { viewModel.validatePassword() }
 
         }
     }
@@ -134,9 +82,9 @@ struct SignupView: View {
             type: .primary,
             text: "Create an Account",
             action: {
-                
+                viewModel.signUp()
             },
-            status: isFormValid ? .enable : .disable
+            status: viewModel.isFormValid ? .enable : .disable
         )
     }
     
@@ -162,7 +110,7 @@ struct SignupView: View {
                 type: .custom(textColor: .black, buttonColor: .white),
                 text: "Sign Up with Google",
                 action: {
-                    
+                    viewModel.signUpWithGoogle()
                 },
                 status: .enable,
                 leading: Image("google")
@@ -176,7 +124,7 @@ struct SignupView: View {
                 type: .custom(textColor: .white, buttonColor: .blue),
                 text: "Sign Up with Facebook",
                 action: {
-                    
+                    viewModel.signUpWithFacebook()
                 },
                 status: .enable,
                 leading: Image("facebook")
@@ -194,7 +142,7 @@ struct SignupView: View {
                 .foregroundColor(.gray)
             
             Button(action: {
-                
+                viewModel.navigateToLogin()
             }) {
                 Text("Log In")
                     .foregroundColor(.black)
