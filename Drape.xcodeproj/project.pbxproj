@@ -20,6 +20,8 @@
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
 		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */; };
+		9F7F65BB2FF0B4AA00974E84 /* HomeProductsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */; };
+		9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductsGridView.swift; sourceTree = "<group>"; };
+		9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				41B03E902FEFCE2A00521C14 /* ContentView.swift */,
 				41B03E942FEFCE2E00521C14 /* Assets.xcassets */,
 				41B03E962FEFCE2E00521C14 /* Preview Content */,
+				9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */,
+				9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */,
 			);
 			path = Drape;
 			sourceTree = "<group>";
@@ -305,8 +311,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
+				9F7F65BB2FF0B4AA00974E84 /* HomeProductsGridView.swift in Sources */,
 				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
+				9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
 				3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */,
