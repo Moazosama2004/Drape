@@ -1,0 +1,102 @@
+//
+//  HomeProductCard.swift
+//  Drape
+//
+//  Created by Youssef Abd El-Fatah on 29/06/2026.
+//
+
+import SwiftUI
+
+struct HomeProductCard: View {
+    
+    let title: String
+    let price: String
+    let imageUrl: String
+    
+    @State private var isFavorited: Bool = false
+    var onFavTap: () -> Void
+    var onCardTap: () -> Void
+    
+    var body: some View {
+        
+        ZStack {
+            
+            // Product details
+            VStack {
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(red: 0.95, green: 0.95, blue: 0.95))
+                        .frame(height: 224)
+                        .overlay(
+                            AsyncImage(url: URL(string: imageUrl)) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                case .failure(_):
+                                    Image(systemName: "photo.fill")
+                                        .foregroundColor(.gray.opacity(0.6))
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                }
+                HStack{
+                    Text(title)
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                        .lineLimit(1)
+                        .padding(.bottom, 4)
+                    Spacer()
+                }
+                .padding(.horizontal, 4)
+                HStack {
+                    Text(price)
+                        .font(.system(size: 13))
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 4)
+            }
+            // right top button
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isFavorited.toggle()
+                        onFavTap()
+                        print("fav button clicked")
+                    }) {
+                        Image(systemName: isFavorited ? "heart.fill" : "heart")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundColor(isFavorited ? .red : .black)
+                            .padding(10)
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                    }
+                }
+                .padding(8)
+                Spacer()
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onCardTap()
+            print("product card button clicked")
+        }
+    }
+}
+
+
+#Preview {
+    HomeProductCard(title: "Nike Shoes", price: "$ 200", imageUrl: "https://cdn.shopify.com/s/files/1/0768/0314/5914/files/product_29_image1.jpg?v=1782057713", onFavTap: {}, onCardTap: {})
+}
