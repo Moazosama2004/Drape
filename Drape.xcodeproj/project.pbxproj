@@ -19,11 +19,6 @@
 		41B03EAC2FEFCE2F00521C14 /* DrapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */; };
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
 		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
-		41B9B8E92FF02858002CF176 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9B8E82FF02858002CF176 /* HomeScreen.swift */; };
-		41B9B8EC2FF395DA002CF176 /* CategoryChipListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9B8EB2FF395DA002CF176 /* CategoryChipListView.swift */; };
-		41B9B8EE2FF39604002CF176 /* CustomSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9B8ED2FF39604002CF176 /* CustomSearchField.swift */; };
-		41B9B8F02FF39625002CF176 /* CategoryChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9B8EF2FF39625002CF176 /* CategoryChipView.swift */; };
-		41B9B8F32FF39890002CF176 /* HeaderHomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9B8F22FF39890002CF176 /* HeaderHomeScreenView.swift */; };
 		9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */; };
 		9F7F65BB2FF0B4AA00974E84 /* HomeProductsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */; };
 		9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */; };
@@ -62,11 +57,6 @@
 		41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITests.swift; sourceTree = "<group>"; };
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		41B9B8E82FF02858002CF176 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		41B9B8EB2FF395DA002CF176 /* CategoryChipListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChipListView.swift; sourceTree = "<group>"; };
-		41B9B8ED2FF39604002CF176 /* CustomSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchField.swift; sourceTree = "<group>"; };
-		41B9B8EF2FF39625002CF176 /* CategoryChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChipView.swift; sourceTree = "<group>"; };
-		41B9B8F22FF39890002CF176 /* HeaderHomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHomeScreenView.swift; sourceTree = "<group>"; };
 		9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductsGridView.swift; sourceTree = "<group>"; };
 		9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCard.swift; sourceTree = "<group>"; };
@@ -136,7 +126,6 @@
 		41B03E8D2FEFCE2A00521C14 /* Drape */ = {
 			isa = PBXGroup;
 			children = (
-				41B9B8E62FF02826002CF176 /* Home */,
 				3EFC6E032FEFEEEC002FBB9B /* OnBoarding */,
 				3EFC6DFC2FEFE44E002FBB9B /* Splash */,
 				9F4DDE682FF06F3700B9D2F0 /* Components */,
@@ -144,6 +133,8 @@
 				41B03E902FEFCE2A00521C14 /* ContentView.swift */,
 				41B03E942FEFCE2E00521C14 /* Assets.xcassets */,
 				41B03E962FEFCE2E00521C14 /* Preview Content */,
+				9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */,
+				9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */,
 			);
 			path = Drape;
 			sourceTree = "<group>";
@@ -175,40 +166,9 @@
 			path = DrapeUITests;
 			sourceTree = "<group>";
 		};
-		41B9B8E62FF02826002CF176 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				41B9B8EA2FF395B8002CF176 /* Views */,
-				41B9B8F12FF39707002CF176 /* Components */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		41B9B8EA2FF395B8002CF176 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41B9B8E82FF02858002CF176 /* HomeScreen.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41B9B8F12FF39707002CF176 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				41B9B8EF2FF39625002CF176 /* CategoryChipView.swift */,
-				41B9B8EB2FF395DA002CF176 /* CategoryChipListView.swift */,
-				41B9B8F22FF39890002CF176 /* HeaderHomeScreenView.swift */,
-				9F7F65BA2FF0B4AA00974E84 /* HomeProductsGridView.swift */,
-				9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */,
-			);
-			name = Components;
-			path = Views;
-			sourceTree = "<group>";
-		};
 		9F4DDE682FF06F3700B9D2F0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				41B9B8ED2FF39604002CF176 /* CustomSearchField.swift */,
 				9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */,
 				41B03EC82FEFE34200521C14 /* CustomTextField.swift */,
 			);
@@ -353,16 +313,11 @@
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
 				9F7F65BB2FF0B4AA00974E84 /* HomeProductsGridView.swift in Sources */,
 				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
-				41B9B8E92FF02858002CF176 /* HomeScreen.swift in Sources */,
-				41B9B8F32FF39890002CF176 /* HeaderHomeScreenView.swift in Sources */,
-				41B9B8F02FF39625002CF176 /* CategoryChipView.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
 				9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
-				41B9B8EE2FF39604002CF176 /* CustomSearchField.swift in Sources */,
 				3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */,
-				41B9B8EC2FF395DA002CF176 /* CategoryChipListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
