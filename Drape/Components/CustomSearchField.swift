@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomSearchField: View {
     @State private var searchTextValue: String = ""
     @FocusState private var isTyping: Bool
-    var onTap: () -> Void
     
     private var borderColor: Color {
         isTyping ? .black : .gray.opacity(0.4)
@@ -44,32 +43,15 @@ struct CustomSearchField: View {
                     .fill(borderColor)
             }
             .animation(.easeInOut(duration: 0.2),value: isTyping)
-            
-            SliderFilterView(onTap:onTap)
-           
+             
         }
         
        
     }
 }
 
-struct SliderFilterView : View {
-    var onTap: () -> Void
-    var body: some View {
-        Button(action: onTap) {
-            Image(systemName: "slider.vertical.3")
-                .font(.system(size: 24, weight: .medium))
-                .foregroundStyle(.white)
-                .frame(width: 52, height: 52)
-                .background {
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .fill(.black)
-                }
-        }
-        .buttonStyle(.plain)
-    }
-}
+
 
 #Preview {
-    CustomSearchField(onTap: {})
+    CustomSearchField()
 }

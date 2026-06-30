@@ -11,6 +11,7 @@
 		3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */; };
 		3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6E002FEFEB5E002FBB9B /* onboarding.png */; };
 		3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6E042FEFEF1B002FBB9B /* OnBoardingScreen.swift */; };
+		4133DE512FF3ACF200291657 /* SliderFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4133DE502FF3ACF200291657 /* SliderFilterView.swift */; };
 		41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */; };
 		41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03E902FEFCE2A00521C14 /* ContentView.swift */; };
 		41B03E952FEFCE2E00521C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B03E942FEFCE2E00521C14 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drape_icon.png; sourceTree = "<group>"; };
 		3EFC6E002FEFEB5E002FBB9B /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding.png; sourceTree = "<group>"; };
 		3EFC6E042FEFEF1B002FBB9B /* OnBoardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScreen.swift; sourceTree = "<group>"; };
+		4133DE502FF3ACF200291657 /* SliderFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderFilterView.swift; sourceTree = "<group>"; };
 		41B03E8B2FEFCE2A00521C14 /* Drape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B03E8E2FEFCE2A00521C14 /* DrapeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeApp.swift; sourceTree = "<group>"; };
 		41B03E902FEFCE2A00521C14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				41B9B8ED2FF39604002CF176 /* CustomSearchField.swift */,
 				9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */,
 				41B03EC82FEFE34200521C14 /* CustomTextField.swift */,
+				4133DE502FF3ACF200291657 /* SliderFilterView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
 				9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
+				4133DE512FF3ACF200291657 /* SliderFilterView.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
 				41B9B8EE2FF39604002CF176 /* CustomSearchField.swift in Sources */,
 				3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */,
