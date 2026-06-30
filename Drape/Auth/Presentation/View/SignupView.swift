@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct SignupView: View {
-    @State private var fullName = ""
-    @State private var email = ""
-    @State private var password = ""
+    @State private var viewModel = SignupViewModel()
     
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 24) {
             headerSection
             formSection
@@ -25,9 +22,8 @@ struct SignupView: View {
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 28)
-        
-        
     }
+       
     
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -42,73 +38,54 @@ struct SignupView: View {
     
     private var formSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Full Name")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your full name", text: $fullName)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Email")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your email address", text: $email)
-                    .keyboardType(.emailAddress)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Password")
-                    .font(.system(size: 16, weight: .medium))
-                
-                //TODO will replace it after Moaz finish Textfields
-                TextField("Enter your password", text: $password)
-                    .textInputAutocapitalization(.never)
-                    .padding()
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-                
-            }
+            CustomTextField(
+                title: "Full Name",
+                errorMessage: viewModel.fullNameError,
+                placeHolder: "Enter your full name",
+                textFieldValue: $viewModel.fullName,
+                state: $viewModel.fullNameState
+            )
+            .onChange(of: viewModel.fullName) { viewModel.validateFullName()}
+
+            CustomTextField(
+                title: "Email",
+                errorMessage: viewModel.emailError,
+                placeHolder: "Enter your email address",
+                textFieldValue: $viewModel.email,
+                state: $viewModel.emailState
+            )
+            .onChange(of: viewModel.email) { viewModel.validateEmail() }
+
+            CustomTextField(
+                title: "Password",
+                isPassword: true,
+                errorMessage: viewModel.passwordError,
+                placeHolder: "Enter your password",
+                textFieldValue: $viewModel.password,
+                state: $viewModel.passwordState
+            )
+            .onChange(of: viewModel.password) { viewModel.validatePassword() }
+
         }
     }
     
     private var termsSection: some View {
-        Text("By signing up you agree to our Terms, Privacy Policy, and Cookie Use") // underline from terms !!!
+        Text("By signing up you agree to our Terms, Privacy Policy, and Cookie Use")
             .font(.system(size: 13))
             .foregroundColor(.gray)
             .fixedSize(horizontal: false, vertical: true)
     }
     
-    //TODO will replace it after yusif finish buttons
     private var createButton: some View {
-        Button(action: {
-            
-        }) {
-            Text("Create an Account")
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .background(Color.gray.opacity(0.45))
-                .cornerRadius(10)
-        }
+        return CustomButton(
+            type: .primary,
+            text: "Create an Account",
+            action: {
+                viewModel.signUp()
+            },
+            status: viewModel.isFormValid ? .enable : .disable
+        )
     }
     
     private var dividerSection: some View {
@@ -129,33 +106,33 @@ struct SignupView: View {
     
     private var socialButtons: some View {
         VStack(spacing: 14) {
-            Button(action: {
-                
-            }) {
-                
-                Text("Sign Up with Google")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                    )
-            }
+            CustomButton(
+                type: .custom(textColor: .black, buttonColor: .white),
+                text: "Sign Up with Google",
+                action: {
+                    viewModel.signUpWithGoogle()
+                },
+                status: .enable,
+                leading: Image("google")
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+            )
             
-            Button(action: {
-                
-            }) {
-                Text("Sign Up with Facebook")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
+            CustomButton(
+                type: .custom(textColor: .white, buttonColor: .blue),
+                text: "Sign Up with Facebook",
+                action: {
+                    viewModel.signUpWithFacebook()
+                },
+                status: .enable,
+                leading: Image("facebook")
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+            )
         }
     }
     
@@ -165,7 +142,7 @@ struct SignupView: View {
                 .foregroundColor(.gray)
             
             Button(action: {
-                
+                viewModel.navigateToLogin()
             }) {
                 Text("Log In")
                     .foregroundColor(.black)
