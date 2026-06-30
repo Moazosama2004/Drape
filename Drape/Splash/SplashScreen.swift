@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct SplashScreen: View {
-    @State private var showOnboarding = false
+    @State private var isActive = false
+    @AppStorage("isFirstLaunch") private var isFirstLaunch: Bool = true
     
     var body: some View {
-        if showOnboarding {
-            OnBoardingScreen()
+        if isActive {
+            if isFirstLaunch {
+                OnBoardingScreen()
+            } else {
+                SignInView()
+            }
         } else {
             ZStack {
                 Color.black
@@ -26,7 +31,7 @@ struct SplashScreen: View {
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation(.easeInOut) {
-                        showOnboarding = true
+                        isActive = true
                     }
                 }
             }

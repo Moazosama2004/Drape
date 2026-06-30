@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E15609B2FF02ACB00684C6A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15609A2FF02ACA00684C6A /* SignInView.swift */; };
 		3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */; };
 		3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */; };
 		3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6E002FEFEB5E002FBB9B /* onboarding.png */; };
@@ -18,10 +19,10 @@
 		41B03EA22FEFCE2F00521C14 /* DrapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EA12FEFCE2F00521C14 /* DrapeTests.swift */; };
 		41B03EAC2FEFCE2F00521C14 /* DrapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */; };
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
+		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		6D0621132FEFE60600C9B2D2 /* TempData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0621122FEFE60600C9B2D2 /* TempData.swift */; };
 		6D06211B2FF01C0300C9B2D2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06211A2FF01C0300C9B2D2 /* SignupView.swift */; };
 		6D06211D2FF01C2800C9B2D2 /* TempDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06211C2FF01C2800C9B2D2 /* TempDomain.swift */; };
-		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E15609A2FF02ACA00684C6A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drape_icon.png; sourceTree = "<group>"; };
 		3EFC6E002FEFEB5E002FBB9B /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding.png; sourceTree = "<group>"; };
@@ -57,10 +59,10 @@
 		41B03EA72FEFCE2F00521C14 /* DrapeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrapeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B03EAB2FEFCE2F00521C14 /* DrapeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITests.swift; sourceTree = "<group>"; };
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6D0621122FEFE60600C9B2D2 /* TempData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempData.swift; sourceTree = "<group>"; };
 		6D06211A2FF01C0300C9B2D2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		6D06211C2FF01C2800C9B2D2 /* TempDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDomain.swift; sourceTree = "<group>"; };
-		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9F4DDE692FF06F4100B9D2F0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				6D06211A2FF01C0300C9B2D2 /* SignupView.swift */,
+				3E15609A2FF02ACA00684C6A /* SignInView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
 				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
+				3E15609B2FF02ACB00684C6A /* SignInView.swift in Sources */,
 				6D0621132FEFE60600C9B2D2 /* TempData.swift in Sources */,
 				6D06211D2FF01C2800C9B2D2 /* TempDomain.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
