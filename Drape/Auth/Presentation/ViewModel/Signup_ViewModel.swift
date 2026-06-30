@@ -22,6 +22,15 @@ final class SignupViewModel {
     var emailError = "Please enter a valid email address"
     var passwordError = "Password must be at least 8 characters"
     
+    var isLoading = false
+    var signUpError: String?
+    var signedUpUser: AppUser?
+    
+    private let signUpUseCase = SignUpUseCase(
+        authRepository: FirebaseAuthRepository(),
+        customerRepository: ShopifyCustomerRepository()
+    )
+    
     var isFormValid: Bool {
         fullNameState == .success && emailState == .success && passwordState == .success
     }
@@ -64,9 +73,21 @@ final class SignupViewModel {
         }
     }
     
-    func signUp() {
+    func signUp() async {
         guard isFormValid else { return }
-        //TODO: call signup method
+        
+        isLoading = true
+        signUpError = nil
+        defer { isLoading = false }
+        
+        do {
+            let user = try await signUpUseCase.execute(fullName: fullName, email: email, password: password)
+            signedUpUser = user
+            print("Signup succeeded for user: \(user)")
+            // TODO: navigate to next screen now that signup succeeded
+        } catch {
+            signUpError = error.localizedDescription
+        }
     }
     
     func signUpWithGoogle() {
@@ -74,11 +95,11 @@ final class SignupViewModel {
     }
     
     func signUpWithFacebook() {
-
+        
     }
     
     func navigateToLogin() {
-
+        
     }
     
 }

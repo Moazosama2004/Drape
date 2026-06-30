@@ -82,7 +82,7 @@ struct SignupView: View {
             type: .primary,
             text: "Create an Account",
             action: {
-                viewModel.signUp()
+                Task{ await viewModel.signUp()}
             },
             status: viewModel.isFormValid ? .enable : .disable
         )
