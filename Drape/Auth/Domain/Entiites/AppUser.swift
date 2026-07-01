@@ -13,3 +13,5 @@ struct AppUser {
     let shopifyCustomerID: String
     let alreadyExisted: Bool
 }
+
+

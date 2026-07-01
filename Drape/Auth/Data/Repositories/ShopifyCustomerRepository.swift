@@ -14,6 +14,33 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
     
     private let tokenStorage = KeychainTokenStorage()
     
+    
+   
+        func fetchShopifyCustomerID(email: String) async throws -> String? {
+            guard var components = URLComponents(string: "https://\(shopDomain)/admin/api/\(apiVersion)/customers/search.json") else {
+                throw URLError(.badURL)
+            }
+            components.queryItems = [URLQueryItem(name: "query", value: "email:\(email)")]
+            guard let url = components.url else { throw URLError(.badURL) }
+     
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue(adminToken, forHTTPHeaderField: "X-Shopify-Access-Token")
+     
+            let (data, response) = try await URLSession.shared.data(for: request)
+            try Self.validate(response, data: data)
+     
+            let result = try JSONDecoder().decode(ShopifyCustomerSearchResponseDTO.self, from: data)
+            guard let customer = result.customers.first else {
+                return nil
+            }
+     
+            let shopifyID = String(customer.id)
+            tokenStorage.saveShopifyCustomerID(shopifyID)
+           
+            return shopifyID
+        }
+    
     func createShopifyCustomer(fullName: String, email: String) async throws -> AppUser {
         if let existing = try await findCustomer(byEmail: email) {
             print("Customer already exists in Shopify")
