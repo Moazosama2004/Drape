@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import FirebaseAuth
+
+
 final class SignUpUseCase {
     private let authRepository: AuthRepositoryProtocol
     private let customerRepository: CustomerRepositoryProtocol
@@ -16,7 +19,10 @@ final class SignUpUseCase {
     }
     
     func execute(fullName: String, email: String, password: String) async throws -> AppUser {
-        _ = try await authRepository.signUp(email: email, password: password)
-        return try await customerRepository.createShopifyCustomer(fullName: fullName, email: email)
-    }
+            // 1. Firebase signup → saves UID + token to Keychain internally
+            _ = try await authRepository.signUp(email: email, password: password)
+            
+            // 2. Create/find Shopify customer → reads UID from Keychain itself
+            return try await customerRepository.createShopifyCustomer(fullName: fullName, email: email)
+        }
 }

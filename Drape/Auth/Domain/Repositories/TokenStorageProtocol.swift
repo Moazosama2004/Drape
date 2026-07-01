@@ -10,4 +10,8 @@ protocol TokenStorageProtocol {
     func saveToken(_ token: String)
     func getToken() -> String?
     func clearToken()
+    func saveFirebaseUID(_ uid: String)
+    func getFirebaseUID() -> String?
+    func clearAll()
 }
+

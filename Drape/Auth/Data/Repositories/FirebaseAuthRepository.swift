@@ -16,7 +16,9 @@ final class FirebaseAuthRepository: AuthRepositoryProtocol {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             let idToken = try await result.user.getIDToken()
             
+            // Save both ID token and Firebase UID for later use
             tokenStorage.saveToken(idToken)
+            tokenStorage.saveFirebaseUID(result.user.uid)
             
             return idToken
         } catch let error as NSError {

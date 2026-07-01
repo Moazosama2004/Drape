@@ -30,7 +30,7 @@ final class KeychainStorage {
             kSecAttrService as String: service,
             kSecAttrAccount as String: key
         ]
-        SecItemDelete(query as CFDictionary) // clear any existing value first
+        SecItemDelete(query as CFDictionary) 
         
         var newItem = query
         newItem[kSecValueData as String] = data

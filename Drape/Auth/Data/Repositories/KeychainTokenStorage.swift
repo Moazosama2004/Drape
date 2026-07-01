@@ -9,6 +9,7 @@ import Foundation
 final class KeychainTokenStorage: TokenStorageProtocol {
     private let keychain = KeychainStorage()
     private let tokenKey = "firebase_id_token"
+    private let firebaseUIDKey = "firebase_uid"
     
     
     func saveToken(_ token: String) {
@@ -22,4 +23,18 @@ final class KeychainTokenStorage: TokenStorageProtocol {
     func clearToken() {
         try? keychain.delete(forKey: tokenKey)
     }
+    
+    func saveFirebaseUID(_ uid: String) {
+        try? keychain.save(uid, forKey: firebaseUIDKey)
+    }
+    
+    func getFirebaseUID() -> String? {
+        keychain.read(forKey: firebaseUIDKey)
+    }
+    
+    func clearAll() {
+        try? keychain.delete(forKey: tokenKey)
+        try? keychain.delete(forKey: firebaseUIDKey)
+    }
 }
+
