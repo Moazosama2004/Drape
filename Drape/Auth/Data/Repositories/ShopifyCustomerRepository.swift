@@ -8,15 +8,17 @@ import Foundation
 
 final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
     
-    private let shopDomain = " "
-    private let adminToken = " "
-    private let apiVersion = "2026-01"
+    private let shopDomain = Secrets.shopDomain
+    private let adminToken = Secrets.adminToken
+    private let apiVersion = Secrets.apiVersion
     
     private let tokenStorage = KeychainTokenStorage()
     
     func createShopifyCustomer(fullName: String, email: String) async throws -> AppUser {
         if let existing = try await findCustomer(byEmail: email) {
             print("Customer already exists in Shopify")
+            let shopifyID = String(existing.id)
+            tokenStorage.saveShopifyCustomerID(shopifyID)
             return AppUser(
                 id: tokenStorage.getFirebaseUID() ?? "",
                 email: existing.email,
@@ -30,7 +32,7 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
         }
         return try await createCustomer(fullName: fullName, email: email)
     }
-        
+    
     private func findCustomer(byEmail email: String) async throws -> ShopifyCustomerDTO? {
         guard var components = URLComponents(string: "https://\(shopDomain)/admin/api/\(apiVersion)/customers/search.json") else {
             throw URLError(.badURL)
@@ -48,7 +50,7 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
         
         return try JSONDecoder().decode(ShopifySearchResponseDTO.self, from: data).customers.first
     }
-        
+    
     private func createCustomer(fullName: String, email: String) async throws -> AppUser {
         let parts = fullName.trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
         let firstName = parts.first ?? fullName
@@ -83,15 +85,19 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
         try Self.validate(response, data: data)
         
         let customer = try JSONDecoder().decode(ShopifyCreateResponseDTO.self, from: data).customer
+        
+        let shopifyID = String(customer.id)
+        tokenStorage.saveShopifyCustomerID(shopifyID)
+        
         return AppUser(
             id: firebaseUID,        // ← from Keychain, not from use case
             email: customer.email,
             fullName: fullName,
-            shopifyCustomerID: String(customer.id),
+            shopifyCustomerID: shopifyID,
             alreadyExisted: false
         )
     }
-        
+    
     private static func validate(_ response: URLResponse, data: Data) throws {
         guard let http = response as? HTTPURLResponse,
               (200...299).contains(http.statusCode) else {
@@ -99,18 +105,18 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
             throw URLError(.badServerResponse, userInfo: [NSLocalizedDescriptionKey: body])
         }
     }
-        
+    
     private func prettyJSON(_ data: Data) -> String {
-        #if DEBUG
+#if DEBUG
         guard let object = try? JSONSerialization.jsonObject(with: data),
               let prettyData = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted, .sortedKeys]),
               let string = String(data: prettyData, encoding: .utf8) else {
             return String(data: data, encoding: .utf8) ?? "Invalid JSON"
         }
         return string
-        #else
+#else
         return ""
-        #endif
+#endif
     }
 }
 
