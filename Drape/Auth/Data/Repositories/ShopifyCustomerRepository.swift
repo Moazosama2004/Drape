@@ -50,6 +50,7 @@ final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
     }
         
     private func createCustomer(fullName: String, email: String) async throws -> AppUser {
+        print("Entered....El")
         let parts = fullName.trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
         let firstName = parts.first ?? fullName
         let lastName = parts.dropFirst().joined(separator: " ")

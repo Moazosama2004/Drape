@@ -74,6 +74,7 @@ final class SignupViewModel {
     }
     
     func signUp() async {
+        print("Started craeting")
         guard isFormValid else { return }
         
         isLoading = true
@@ -87,6 +88,7 @@ final class SignupViewModel {
             // TODO: navigate to next screen now that signup succeeded
         } catch {
             signUpError = error.localizedDescription
+            print(signUpError)
         }
     }
     

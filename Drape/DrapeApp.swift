@@ -17,7 +17,7 @@ struct DrapeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            SignupView()
         }
     }
 }
