@@ -89,6 +89,7 @@ final class SignupViewModel {
         } catch {
             signUpError = error.localizedDescription
             print(signUpError)
+            print("this is my error : \(signUpError)")
         }
     }
     

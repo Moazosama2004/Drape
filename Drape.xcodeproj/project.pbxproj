@@ -21,6 +21,7 @@
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
 		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		6D06211B2FF01C0300C9B2D2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06211A2FF01C0300C9B2D2 /* SignupView.swift */; };
+		6D32073E2FF53494005BB466 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32073D2FF53494005BB466 /* Secrets.swift */; };
 		6D718AC12FF2C4FA009263ED /* Signup_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D718AC02FF2C4FA009263ED /* Signup_ViewModel.swift */; };
 		6D9ABED32FF4117700C60D08 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9ABED22FF4117700C60D08 /* FirebaseAuth */; };
 		6D9ABED52FF4117700C60D08 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9ABED42FF4117700C60D08 /* FirebaseFunctions */; };
@@ -73,6 +74,7 @@
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6D06211A2FF01C0300C9B2D2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		6D32073D2FF53494005BB466 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		6D718AC02FF2C4FA009263ED /* Signup_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup_ViewModel.swift; sourceTree = "<group>"; };
 		6D9C9A8A2FF430D700C8AA09 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		6D9C9A8D2FF4310A00C8AA09 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9C9A9A2FF431FC00C8AA09 /* KeychainStorage.swift */,
+				6D32073D2FF53494005BB466 /* Secrets.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D06211B2FF01C0300C9B2D2 /* SignupView.swift in Sources */,
+				6D32073E2FF53494005BB466 /* Secrets.swift in Sources */,
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
 				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,

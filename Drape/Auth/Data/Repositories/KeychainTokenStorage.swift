@@ -10,7 +10,7 @@ final class KeychainTokenStorage: TokenStorageProtocol {
     private let keychain = KeychainStorage()
     private let tokenKey = "firebase_id_token"
     private let firebaseUIDKey = "firebase_uid"
-    
+    private let shopifyCustomerIDKey = "shopify_customer_id"
     
     func saveToken(_ token: String) {
         try? keychain.save(token, forKey: tokenKey)
@@ -32,9 +32,21 @@ final class KeychainTokenStorage: TokenStorageProtocol {
         keychain.read(forKey: firebaseUIDKey)
     }
     
+    func saveShopifyCustomerID(_ id: String) {
+        try? keychain.save(id, forKey: shopifyCustomerIDKey)
+    }
+    func getShopifyCustomerID() -> String? {
+        keychain.read(forKey: shopifyCustomerIDKey)
+    }
+    func clearShopifyCustomerID() {
+        try? keychain.delete(forKey: shopifyCustomerIDKey)
+    }
+    
     func clearAll() {
         try? keychain.delete(forKey: tokenKey)
         try? keychain.delete(forKey: firebaseUIDKey)
+        try? keychain.delete(forKey: shopifyCustomerIDKey)
     }
+    
 }
 
