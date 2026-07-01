@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct ProductResponse: Codable {
+    let products: [ProductDTO]
+}
+
 struct ProductDTO: Codable {
     
     let id: Int
