@@ -22,7 +22,7 @@ struct HomeProductCard: View {
         ZStack {
             
             // Product details
-            VStack {
+            VStack(alignment: .leading, spacing: 4) {
                 ZStack {
                     
                     RoundedRectangle(cornerRadius: 16)
@@ -47,24 +47,17 @@ struct HomeProductCard: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
-                HStack{
-                    Text(title)
-                        .font(.system(size: 14))
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
-                        .padding(.bottom, 4)
-                    Spacer()
-                }
-                .padding(.horizontal, 4)
-                HStack {
-                    Text(price)
-                        .font(.system(size: 13))
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 4)
+                Text(title)
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .lineLimit(1)
+                    .padding(.horizontal, 4)
+                    .padding(.top, 4)
+                Text(price)
+                    .font(.system(size: 14))
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 4)
             }
             // right top button
             VStack {
