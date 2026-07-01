@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct OnBoardingScreen: View {
-    @AppStorage("isFirstLaunch") private var isFirstLaunch: Bool = true
     
+    @Environment(AppRouter.self) private var router
+
+    @AppStorage("isFirstLaunch")
+    private var isFirstLaunch = true
     var body: some View {
         VStack(spacing: 0) {
             
@@ -34,6 +37,8 @@ struct OnBoardingScreen: View {
             CustomButton(type: .primary, text: "Get Started", action: {
                 withAnimation {
                     isFirstLaunch = false
+                    router.showSignIn()
+                    //router.currentScreen = .signIn
                 }
             },trailing: Image(systemName: "arrow.right"))
             .padding(.all,15)

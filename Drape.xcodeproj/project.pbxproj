@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3E15609B2FF02ACB00684C6A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15609A2FF02ACA00684C6A /* SignInView.swift */; };
+		3E22129F2FF557D100770211 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E22129E2FF557D100770211 /* SignInUseCase.swift */; };
+		3E2212A12FF5581000770211 /* SignInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2212A02FF5581000770211 /* SignInError.swift */; };
+		3E2212A32FF5593800770211 /* ShopifyCustomerSearchDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2212A22FF5593800770211 /* ShopifyCustomerSearchDto.swift */; };
+		3E2212A52FF559B200770211 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2212A42FF559B200770211 /* SignInViewModel.swift */; };
+		3E2212A92FF56ED600770211 /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2212A82FF56ED600770211 /* AppScreen.swift */; };
+		3E2212AD2FF56F1200770211 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2212AC2FF56F1200770211 /* AppRouter.swift */; };
 		3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */; };
 		3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */; };
 		3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6E002FEFEB5E002FBB9B /* onboarding.png */; };
@@ -21,7 +27,6 @@
 		41B03EAE2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */; };
 		41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03EC82FEFE34200521C14 /* CustomTextField.swift */; };
 		6D06211B2FF01C0300C9B2D2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06211A2FF01C0300C9B2D2 /* SignupView.swift */; };
-		6D32073E2FF53494005BB466 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32073D2FF53494005BB466 /* Secrets.swift */; };
 		6D718AC12FF2C4FA009263ED /* Signup_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D718AC02FF2C4FA009263ED /* Signup_ViewModel.swift */; };
 		6D9ABED32FF4117700C60D08 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9ABED22FF4117700C60D08 /* FirebaseAuth */; };
 		6D9ABED52FF4117700C60D08 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9ABED42FF4117700C60D08 /* FirebaseFunctions */; };
@@ -58,6 +63,12 @@
 
 /* Begin PBXFileReference section */
 		3E15609A2FF02ACA00684C6A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		3E22129E2FF557D100770211 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		3E2212A02FF5581000770211 /* SignInError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInError.swift; sourceTree = "<group>"; };
+		3E2212A22FF5593800770211 /* ShopifyCustomerSearchDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopifyCustomerSearchDto.swift; sourceTree = "<group>"; };
+		3E2212A42FF559B200770211 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		3E2212A82FF56ED600770211 /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
+		3E2212AC2FF56F1200770211 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drape_icon.png; sourceTree = "<group>"; };
 		3EFC6E002FEFEB5E002FBB9B /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding.png; sourceTree = "<group>"; };
@@ -74,7 +85,6 @@
 		41B03EAD2FEFCE2F00521C14 /* DrapeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrapeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41B03EC82FEFE34200521C14 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6D06211A2FF01C0300C9B2D2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-		6D32073D2FF53494005BB466 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		6D718AC02FF2C4FA009263ED /* Signup_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup_ViewModel.swift; sourceTree = "<group>"; };
 		6D9C9A8A2FF430D700C8AA09 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		6D9C9A8D2FF4310A00C8AA09 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -117,6 +127,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2212A62FF56EB100770211 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3E2212A72FF56EBD00770211 /* Navigation  */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3E2212A72FF56EBD00770211 /* Navigation  */ = {
+			isa = PBXGroup;
+			children = (
+				3E2212A82FF56ED600770211 /* AppScreen.swift */,
+				3E2212AC2FF56F1200770211 /* AppRouter.swift */,
+			);
+			path = "Navigation ";
+			sourceTree = "<group>";
+		};
 		3EFC6DFC2FEFE44E002FBB9B /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +184,7 @@
 		41B03E8D2FEFCE2A00521C14 /* Drape */ = {
 			isa = PBXGroup;
 			children = (
+				3E2212A62FF56EB100770211 /* Core */,
 				6D0621112FEFE5AC00C9B2D2 /* Auth */,
 				3EFC6E032FEFEEEC002FBB9B /* OnBoarding */,
 				3EFC6DFC2FEFE44E002FBB9B /* Splash */,
@@ -248,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				6D718AC02FF2C4FA009263ED /* Signup_ViewModel.swift */,
+				3E2212A42FF559B200770211 /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -256,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9C9A8A2FF430D700C8AA09 /* AppUser.swift */,
+				3E2212A22FF5593800770211 /* ShopifyCustomerSearchDto.swift */,
 			);
 			path = Entiites;
 			sourceTree = "<group>";
@@ -274,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9C9A942FF4318400C8AA09 /* SignUpUseCase.swift */,
+				3E22129E2FF557D100770211 /* SignInUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -282,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9C9A972FF431D200C8AA09 /* SignUpError.swift */,
+				3E2212A02FF5581000770211 /* SignInError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -290,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				6D9C9A9A2FF431FC00C8AA09 /* KeychainStorage.swift */,
-				6D32073D2FF53494005BB466 /* Secrets.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -452,11 +483,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D06211B2FF01C0300C9B2D2 /* SignupView.swift in Sources */,
-				6D32073E2FF53494005BB466 /* Secrets.swift in Sources */,
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
+				3E2212A32FF5593800770211 /* ShopifyCustomerSearchDto.swift in Sources */,
 				3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
+				3E2212AD2FF56F1200770211 /* AppRouter.swift in Sources */,
 				6D9C9A902FF4313A00C8AA09 /* CustomerRepositoryProtocol.swift in Sources */,
+				3E22129F2FF557D100770211 /* SignInUseCase.swift in Sources */,
 				6D9C9A8B2FF430D700C8AA09 /* AppUser.swift in Sources */,
 				3E15609B2FF02ACB00684C6A /* SignInView.swift in Sources */,
 				6D718AC12FF2C4FA009263ED /* Signup_ViewModel.swift in Sources */,
@@ -464,11 +497,14 @@
 				6D9C9AA02FF4326000C8AA09 /* FirebaseAuthRepository.swift in Sources */,
 				41B03E8F2FEFCE2A00521C14 /* DrapeApp.swift in Sources */,
 				6D9C9A8E2FF4310A00C8AA09 /* AuthRepositoryProtocol.swift in Sources */,
+				3E2212A52FF559B200770211 /* SignInViewModel.swift in Sources */,
 				6D9C9A922FF4315C00C8AA09 /* TokenStorageProtocol.swift in Sources */,
 				6D9C9A952FF4318400C8AA09 /* SignUpUseCase.swift in Sources */,
 				9F4DDE6A2FF06F4700B9D2F0 /* CustomButton.swift in Sources */,
+				3E2212A12FF5581000770211 /* SignInError.swift in Sources */,
 				3EFC6E052FEFEF1B002FBB9B /* OnBoardingScreen.swift in Sources */,
 				6D9C9A982FF431D200C8AA09 /* SignUpError.swift in Sources */,
+				3E2212A92FF56ED600770211 /* AppScreen.swift in Sources */,
 				6D9C9A9B2FF431FC00C8AA09 /* KeychainStorage.swift in Sources */,
 				6D9C9A9E2FF4323C00C8AA09 /* KeychainTokenStorage.swift in Sources */,
 			);

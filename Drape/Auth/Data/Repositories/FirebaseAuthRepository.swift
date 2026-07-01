@@ -33,4 +33,30 @@ final class FirebaseAuthRepository: AuthRepositoryProtocol {
             throw error
         }
     }
+    
+    func signIn(email: String, password: String) async throws -> String {
+           do {
+               let result = try await Auth.auth().signIn(withEmail: email, password: password)
+               let idToken = try await result.user.getIDToken()
+    
+               tokenStorage.saveToken(idToken)
+               tokenStorage.saveFirebaseUID(result.user.uid)
+    
+               return idToken
+           } catch let error as NSError {
+               if let code = AuthErrorCode(rawValue: error.code) {
+                   switch code {
+                   case .userNotFound, .wrongPassword, .invalidCredential:
+                       throw SignInError.accountNotFound
+                   case .invalidEmail:
+                       throw SignInError.invalidEmail
+                   case .userDisabled:
+                       throw SignInError.userDisabled
+                   default:
+                       throw SignInError.unknown(error.localizedDescription)
+                   }
+               }
+               throw error
+           }
+       }
 }
