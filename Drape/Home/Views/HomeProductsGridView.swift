@@ -33,7 +33,7 @@ struct HomeProductsGridView: View {
                 HomeProductCard(title: product.title, price: product.price, imageUrl: product.imageURL, onFavTap: {}, onCardTap: {})
             }
         }
-        .padding()
+        
     }
 }
 
