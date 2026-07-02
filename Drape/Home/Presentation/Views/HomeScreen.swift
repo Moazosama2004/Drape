@@ -9,11 +9,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     
-    @ObservedObject private var viewModel: HomeViewModel
-    
-    init(viewModel: HomeViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject private var viewModel: HomeViewModel = HomeViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -56,7 +52,7 @@ struct HomeScreen: View {
             } else {
                 // MARK: - Content Layer (Only shown when data is ready)
                 ScrollView {
-                    LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    LazyVStack(pinnedViews: [.sectionHeaders]) { 
                         Section {
                             BrandSectionView(brands: viewModel.brands)
                                 .padding(.horizontal, 16.0)
@@ -88,24 +84,4 @@ struct HomeScreen: View {
 }
 
 
-#Preview {
-    HomeScreen(
-        viewModel: HomeViewModel(
-            getAllProductsUseCase: GetAllProductsUseCase(
-                homeRepository: HomeRepositoryImpl(
-                    networkService:                     ShopifyNetworkService()
-                )
-            ),
-            getAllBrandsUseCase: GetAllBrandsUseCase(
-                homerepository: HomeRepositoryImpl(
-                    networkService: ShopifyNetworkService()
-                )
-            ),
-            getAllCategories: GetAllCategoriesUseCase(
-                homeRepository: HomeRepositoryImpl(
-                    networkService: ShopifyNetworkService()
-                )
-            )
-    )
-    )
-}
+#Preview {}

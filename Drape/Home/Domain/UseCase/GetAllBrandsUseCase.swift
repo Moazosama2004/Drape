@@ -11,7 +11,7 @@ class GetAllBrandsUseCase {
     
     let homerepository: HomeRepositoryProtocol
     
-    init(homerepository: HomeRepositoryProtocol) {
+    init(homerepository: HomeRepositoryProtocol = HomeRepositoryImpl()) {
         self.homerepository = homerepository
     }
     

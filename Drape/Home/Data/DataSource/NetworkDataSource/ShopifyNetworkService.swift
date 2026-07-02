@@ -14,6 +14,10 @@ protocol NetworkServiceProtocol {
 
 class ShopifyNetworkService: NetworkServiceProtocol {
     
+    static let shared = ShopifyNetworkService()
+    
+    private init() {}
+    
     func fetchProdcuts() async throws -> [ProductDTO] {
         
         let response: ProductResponse = try await ShopifyNetworkManager.fetch(endpoint: "products.json")

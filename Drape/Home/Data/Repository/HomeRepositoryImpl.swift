@@ -13,7 +13,7 @@ class HomeRepositoryImpl: HomeRepositoryProtocol {
     
     let networkService: NetworkServiceProtocol
     
-    init(networkService: NetworkServiceProtocol) {
+    init(networkService: NetworkServiceProtocol = ShopifyNetworkService.shared) {
         self.networkService = networkService
     }
     

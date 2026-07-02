@@ -31,9 +31,9 @@ class HomeViewModel: ObservableObject {
     private let getAllCategories: GetAllCategoriesUseCase
     
     init(
-        getAllProductsUseCase: GetAllProductsUseCase,
-        getAllBrandsUseCase: GetAllBrandsUseCase,
-        getAllCategories: GetAllCategoriesUseCase
+        getAllProductsUseCase: GetAllProductsUseCase = GetAllProductsUseCase(),
+        getAllBrandsUseCase: GetAllBrandsUseCase = GetAllBrandsUseCase(),
+        getAllCategories: GetAllCategoriesUseCase = GetAllCategoriesUseCase()
     ) {
         self.getAllProductsUseCase = getAllProductsUseCase
         self.getAllBrandsUseCase = getAllBrandsUseCase

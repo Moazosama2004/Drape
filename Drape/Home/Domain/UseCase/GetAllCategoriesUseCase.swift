@@ -11,7 +11,7 @@ class GetAllCategoriesUseCase {
     
     let homeRepository: HomeRepositoryProtocol
     
-    init(homeRepository: HomeRepositoryProtocol) {
+    init(homeRepository: HomeRepositoryProtocol = HomeRepositoryImpl()) {
         self.homeRepository = homeRepository
     }
     
