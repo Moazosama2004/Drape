@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    
+    @ObservedObject private var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+            // MARK: - Fixed Top Header Elements
             VStack {
                 HeaderHomeScreenView(onBellTap: {})
                     .padding(.horizontal, 16.0)
@@ -22,48 +30,54 @@ struct HomeScreen: View {
                 }
                 .padding(.horizontal, 16.0)
                 .padding(.bottom, 16.0)
-
             }
-                    
-            ScrollView(){
-                LazyVStack(pinnedViews: [.sectionHeaders]) {
-                    Section {
-                        VendorSectionView()
-                            .padding(.horizontal, 16.0)
-                            .padding(.bottom, 16.0)
-                    }
-                    
-                    Section {
-                        HomeProductsGridView(
-                            products: [
-                                TempProduct(id: 1, title: "Regular Fit Slogan", price: "$ 1,190", imageURL: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"),
-                                TempProduct(id: 2, title: "Oversized Hoodie", price: "$ 2,450", imageURL: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"),
-                                TempProduct(id: 3, title: "Classic Denim", price: "$ 3,200", imageURL: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500"),
-                                TempProduct(id: 4, title: "Smart Chinos", price: "$ 1,890", imageURL: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500"),
-                                TempProduct(id: 5, title: "Regular Fit Slogan", price: "$ 1,190", imageURL: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"),
-                                TempProduct(id: 6, title: "Oversized Hoodie", price: "$ 2,450", imageURL: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"),
-                                TempProduct(id: 7, title: "Classic Denim", price: "$ 3,200", imageURL: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500"),
-                                TempProduct(id: 8, title: "Smart Chinos", price: "$ 1,890", imageURL: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500")
-                            ]
-                        )
-                    } header: {
-                        CategoryChipListView()
-                            .padding(.leading, 16.0)
-                            .padding(.bottom, 24.0)
-                            .background(.white)
-                    }
-                    
-                    
-                }
-                .padding(.horizontal, 16.0)
-            }
-            .scrollIndicators(.hidden)
             
+            // MARK: - Dynamic State Layer (Pulled Out of ScrollView)
+            if viewModel.isLoading {
+                // Now max height expands perfectly to fill the remaining screen space
+                ProgressView("Loading products")
+                    .frame(maxHeight: .infinity, alignment: .center)
+                    
+            } else if let errorMessage = viewModel.errorMessage {
+                // Pulling this out means Spacers can now push against the entire screen dimensions
+                VStack {
+                    Spacer()
+                    ContentUnavailableView(
+                        "Something went wrong",
+                        systemImage: "wifi.exclamationmark",
+                        description: Text(errorMessage)
+                    )
+                    Spacer()
+                }
+                
+            } else {
+                // MARK: - Content Layer (Only shown when data is ready)
+                ScrollView {
+                    LazyVStack(pinnedViews: [.sectionHeaders]) {
+                        Section {
+                            VendorSectionView()
+                                .padding(.horizontal, 16.0)
+                                .padding(.bottom, 16.0)
+                        }
+                        
+                        Section {
+                            HomeProductsGridView(
+                                products: viewModel.products
+                            )
+                        } header: {
+                            CategoryChipListView()
+                                .padding(.leading, 16.0)
+                                .padding(.bottom, 24.0)
+                                .background(.white)
+                        }
+                    }
+                    .padding(.horizontal, 16.0)
+                }
+                .scrollIndicators(.hidden)
+            }
+        }
+        .task {
+            await viewModel.getProducts()
         }
     }
-}
-
-
-#Preview {
-    HomeScreen()
 }

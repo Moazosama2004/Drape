@@ -18,7 +18,7 @@ struct ProductDTO: Codable {
     let vendor: String // ex: Adidas
     let productType: String // ex: Shoes
     let variants: [VariantDTO] // gets the price
-    let image: ImageDTO // gets the image link
+    let image: ImageDTO? // gets the image link
 }
 
 struct VariantDTO: Codable {
@@ -38,7 +38,7 @@ extension ProductDTO {
             Category: self.vendor,
             productType: self.productType,
             price: self.variants[0].price,
-            imageUrl: self.image.src
+            imageUrl: self.image?.src ?? "placeholder"
         )
     }
 }

@@ -14,7 +14,9 @@ protocol NetworkServiceProtocol {
 class ShopifyNetworkService: NetworkServiceProtocol {
     
     func fetchProdcuts() async throws -> [ProductDTO] {
+        
         let response: ProductResponse = try await ShopifyNetworkManager.fetch(endpoint: "products.json")
+                
         return response.products
     }
     

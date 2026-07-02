@@ -13,7 +13,7 @@ class ShopifyNetworkManager {
     static func fetch<T: Decodable>(endpoint: String) async throws -> T {
         
         let url = "https://\(APIConfig.shopifyShopName).myshopify.com/admin/api/2026-01/\(endpoint)"
-        
+
         let headers: HTTPHeaders = [
             "X-Shopify-Access-Token": APIConfig.shopifyApiKey,
             "Content-Type": "application/json"

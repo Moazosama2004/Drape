@@ -40,6 +40,7 @@
 		9FB047F72FF5F4EE00F24615 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB047F62FF5F4EE00F24615 /* Product.swift */; };
 		9FB047FA2FF5FB4E00F24615 /* HomeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB047F92FF5FB4E00F24615 /* HomeRepositoryProtocol.swift */; };
 		9FB047FD2FF5FC2300F24615 /* GetAllProductsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB047FC2FF5FC2300F24615 /* GetAllProductsUseCase.swift */; };
+		9FB048002FF5FE7E00F24615 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB047FF2FF5FE7E00F24615 /* HomeViewModel.swift */; };
 		9FB0C0132FF59D8F005DE79C /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0C0122FF59D8F005DE79C /* ProductDTO.swift */; };
 		9FFBA2A72FF38A2600A0B28C /* HomeProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		9FB047F62FF5F4EE00F24615 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		9FB047F92FF5FB4E00F24615 /* HomeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9FB047FC2FF5FC2300F24615 /* GetAllProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllProductsUseCase.swift; sourceTree = "<group>"; };
+		9FB047FF2FF5FE7E00F24615 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9FB0C0122FF59D8F005DE79C /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
 		9FFBA2A62FF38A2600A0B28C /* HomeProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +337,7 @@
 			children = (
 				41B9B8EA2FF395B8002CF176 /* Views */,
 				41B9B8F12FF39707002CF176 /* Components */,
+				9FB047FF2FF5FE7E00F24615 /* HomeViewModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				41B9B8F32FF39890002CF176 /* HeaderHomeScreenView.swift in Sources */,
 				9FB047F32FF5F47400F24615 /* HomeRepositoryImpl.swift in Sources */,
 				9FB0C0132FF59D8F005DE79C /* ProductDTO.swift in Sources */,
+				9FB048002FF5FE7E00F24615 /* HomeViewModel.swift in Sources */,
 				41B9B8F02FF39625002CF176 /* CategoryChipView.swift in Sources */,
 				9FB047E22FF5C1C200F24615 /* ShopifyNetworkManager.swift in Sources */,
 				41B03E912FEFCE2A00521C14 /* ContentView.swift in Sources */,
