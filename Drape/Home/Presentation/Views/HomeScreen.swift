@@ -65,10 +65,12 @@ struct HomeScreen: View {
                         
                         Section {
                             HomeProductsGridView(
-                                products: viewModel.products
+                                products: viewModel.filteredProducts
                             )
                         } header: {
-                            CategoryChipListView()
+                            CategoryChipListView(
+                                viewModel: viewModel
+                            )
                                 .padding(.leading, 16.0)
                                 .padding(.bottom, 24.0)
                                 .background(.white)
@@ -97,8 +99,13 @@ struct HomeScreen: View {
             getAllBrandsUseCase: GetAllBrandsUseCase(
                 homerepository: HomeRepositoryImpl(
                     networkService: ShopifyNetworkService()
+                )
+            ),
+            getAllCategories: GetAllCategoriesUseCase(
+                homeRepository: HomeRepositoryImpl(
+                    networkService: ShopifyNetworkService()
+                )
             )
-        )
     )
     )
 }
