@@ -8,9 +8,9 @@ import Foundation
 
 final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
     
-    private let shopDomain = Secrets.shopDomain
-    private let adminToken = Secrets.adminToken
-    private let apiVersion = Secrets.apiVersion
+    private let shopDomain = ShopifyConfig.hostname
+    private let adminToken = ShopifyConfig.accessToken
+    private let apiVersion = ShopifyConfig.apiVersion
     
     private let tokenStorage = KeychainTokenStorage()
     
