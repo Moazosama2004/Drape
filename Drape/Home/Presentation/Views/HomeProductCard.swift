@@ -9,9 +9,7 @@ import SwiftUI
 
 struct HomeProductCard: View {
     
-    let title: String
-    let price: String
-    let imageUrl: String
+    let product: Product
     
     @State private var isFavorited: Bool = false
     var onFavTap: () -> Void
@@ -29,31 +27,38 @@ struct HomeProductCard: View {
                         .fill(Color(red: 0.95, green: 0.95, blue: 0.95))
                         .frame(height: 224)
                         .overlay(
-                            AsyncImage(url: URL(string: imageUrl)) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                case .failure(_):
+                            Group {
+                                if let imageUrl = product.imageUrl, let url = URL(string: imageUrl) {
+                                    AsyncImage(url: url) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            ProgressView()
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                        case .failure(_):
+                                            Image(systemName: "photo.fill")
+                                                .foregroundColor(.gray.opacity(0.6))
+                                        @unknown default:
+                                            EmptyView()
+                                        }
+                                    }
+                                } else {
                                     Image(systemName: "photo.fill")
                                         .foregroundColor(.gray.opacity(0.6))
-                                @unknown default:
-                                    EmptyView()
                                 }
                             }
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
-                Text(title)
+                Text(product.name)
                     .font(.system(size: 16))
                     .fontWeight(.bold)
                     .lineLimit(1)
                     .padding(.horizontal, 4)
                     .padding(.top, 4)
-                Text(price)
+                Text(product.price)
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.gray)
@@ -91,5 +96,4 @@ struct HomeProductCard: View {
 
 
 #Preview {
-    HomeProductCard(title: "Nike Shoes", price: "$ 200", imageUrl: "https://cdn.shopify.com/s/files/1/0768/0314/5914/files/product_29_image1.jpg?v=1782057713", onFavTap: {}, onCardTap: {})
 }

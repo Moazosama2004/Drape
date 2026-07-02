@@ -9,4 +9,5 @@ import Foundation
 
 protocol HomeRepositoryProtocol {
     func fetchProducts() async throws -> [Product]
+    func fetchBrands() async throws -> [Brand]
 }

@@ -35,8 +35,11 @@ struct HomeScreen: View {
             // MARK: - Dynamic State Layer (Pulled Out of ScrollView)
             if viewModel.isLoading {
                 // Now max height expands perfectly to fill the remaining screen space
-                ProgressView("Loading products")
-                    .frame(maxHeight: .infinity, alignment: .center)
+                VStack {
+                    Spacer()
+                    ProgressView("Loading")
+                    Spacer()
+                }
                     
             } else if let errorMessage = viewModel.errorMessage {
                 // Pulling this out means Spacers can now push against the entire screen dimensions
@@ -55,7 +58,7 @@ struct HomeScreen: View {
                 ScrollView {
                     LazyVStack(pinnedViews: [.sectionHeaders]) {
                         Section {
-                            VendorSectionView()
+                            BrandSectionView(brands: viewModel.brands)
                                 .padding(.horizontal, 16.0)
                                 .padding(.bottom, 16.0)
                         }
@@ -73,11 +76,29 @@ struct HomeScreen: View {
                     }
                     .padding(.horizontal, 16.0)
                 }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.hidden) 
             }
         }
         .task {
-            await viewModel.getProducts()
+            await viewModel.loadHomeData()
         }
     }
+}
+
+
+#Preview {
+    HomeScreen(
+        viewModel: HomeViewModel(
+            getAllProductsUseCase: GetAllProductsUseCase(
+                homeRepository: HomeRepositoryImpl(
+                    networkService:                     ShopifyNetworkService()
+                )
+            ),
+            getAllBrandsUseCase: GetAllBrandsUseCase(
+                homerepository: HomeRepositoryImpl(
+                    networkService: ShopifyNetworkService()
+            )
+        )
+    )
+    )
 }

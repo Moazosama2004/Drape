@@ -12,25 +12,33 @@ import Foundation
 class HomeViewModel: ObservableObject {
     
     @Published var products: [Product] = []
+    @Published var brands: [Brand] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     
-    private let getProductsUseCase: GetAllProductsUseCase
+    private let getAllProductsUseCase: GetAllProductsUseCase
+    private let getAllBrandsUseCase: GetAllBrandsUseCase
     
-    init(getProductsUseCase: GetAllProductsUseCase) {
-        self.getProductsUseCase = getProductsUseCase
+    init(
+        getAllProductsUseCase: GetAllProductsUseCase,
+        getAllBrandsUseCase: GetAllBrandsUseCase
+    ) {
+        self.getAllProductsUseCase = getAllProductsUseCase
+        self.getAllBrandsUseCase = getAllBrandsUseCase
     }
     
-    func getProducts() async {
+    func loadHomeData() async {
      
         isLoading = true
         errorMessage = nil
         
         do {
-            self.products = try await getProductsUseCase.execute()
+            self.products = try await getAllProductsUseCase.execute()
+            self.brands = try await getAllBrandsUseCase.execute()
+            
             isLoading = false
         } catch {
-            errorMessage = "Failed to load products \(error.localizedDescription)"
+            errorMessage = "Failed to load data \(error.localizedDescription)"
             isLoading = false
         }
     }

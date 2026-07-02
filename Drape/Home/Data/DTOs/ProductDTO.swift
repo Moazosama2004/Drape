@@ -25,20 +25,16 @@ struct VariantDTO: Codable {
     let price: String
 }
 
-struct ImageDTO: Codable {
-    let src: String
-}
-
 extension ProductDTO {
     
     func convertToEntity() -> Product {
         return Product(
             id: self.id,
             name: self.title,
-            Category: self.vendor,
+            brand: self.vendor,
             productType: self.productType,
             price: self.variants[0].price,
-            imageUrl: self.image?.src ?? "placeholder"
+            imageUrl: self.image?.src
         )
     }
 }

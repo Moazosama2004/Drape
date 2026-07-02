@@ -9,6 +9,8 @@ import Foundation
 
 class HomeRepositoryImpl: HomeRepositoryProtocol {
     
+    
+    
     let networkService: NetworkServiceProtocol
     
     init(networkService: NetworkServiceProtocol) {
@@ -19,5 +21,10 @@ class HomeRepositoryImpl: HomeRepositoryProtocol {
         
         let productDTOs = try await networkService.fetchProdcuts()
         return productDTOs.map { $0.convertToEntity() }
+    }
+    
+    func fetchBrands() async throws -> [Brand] {
+        let vendorDTOs = try await networkService.fetchVendors()
+        return vendorDTOs.map { $0.convertToBrand() }
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 struct Product: Identifiable {
     let id: Int
     let name: String
-    let Category: String // ex: Adidas
+    let brand: String // ex: Adidas
     let productType: String // ex: Shoes
     let price: String
-    let imageUrl: String
+    let imageUrl: String?
 }
