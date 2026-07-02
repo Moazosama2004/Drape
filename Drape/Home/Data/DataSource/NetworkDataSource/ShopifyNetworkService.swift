@@ -8,12 +8,12 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func fetchProdcut() async throws -> [ProductDTO]
+    func fetchProdcuts() async throws -> [ProductDTO]
 }
 
 class ShopifyNetworkService: NetworkServiceProtocol {
     
-    func fetchProdcut() async throws -> [ProductDTO] {
+    func fetchProdcuts() async throws -> [ProductDTO] {
         let response: ProductResponse = try await ShopifyNetworkManager.fetch(endpoint: "products.json")
         return response.products
     }
