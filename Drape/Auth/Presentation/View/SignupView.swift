@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignupView: View {
     @State private var viewModel = SignupViewModel()
+    @Environment(AppRouter.self) private var router
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -142,7 +144,7 @@ struct SignupView: View {
                 .foregroundColor(.gray)
             
             Button(action: {
-                viewModel.navigateToLogin()
+                router.showSignIn()
             }) {
                 Text("Log In")
                     .foregroundColor(.black)

@@ -100,9 +100,6 @@ final class SignupViewModel {
     func signUpWithFacebook() {
         
     }
-    
-    func navigateToLogin() {
-        
-    }
+
     
 }

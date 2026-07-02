@@ -7,169 +7,72 @@
 import Foundation
 
 final class ShopifyCustomerRepository: CustomerRepositoryProtocol {
-    
-    private let shopDomain = ShopifyConfig.hostname
-    private let adminToken = ShopifyConfig.accessToken
-    private let apiVersion = ShopifyConfig.apiVersion
-    
-    private let tokenStorage = KeychainTokenStorage()
-    
-    
-   
-        func fetchShopifyCustomerID(email: String) async throws -> String? {
-            guard var components = URLComponents(string: "https://\(shopDomain)/admin/api/\(apiVersion)/customers/search.json") else {
-                throw URLError(.badURL)
-            }
-            components.queryItems = [URLQueryItem(name: "query", value: "email:\(email)")]
-            guard let url = components.url else { throw URLError(.badURL) }
-     
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            request.setValue(adminToken, forHTTPHeaderField: "X-Shopify-Access-Token")
-     
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try Self.validate(response, data: data)
-     
-            let result = try JSONDecoder().decode(ShopifyCustomerSearchResponseDTO.self, from: data)
-            guard let customer = result.customers.first else {
-                return nil
-            }
-     
-            let shopifyID = String(customer.id)
-            tokenStorage.saveShopifyCustomerID(shopifyID)
-           
-            return shopifyID
-        }
-    
+
+    private let dataSource: ShopifyAuthRemoteDataSource
+    private let tokenStorage: KeychainTokenStorage
+
+    init(
+        dataSource: ShopifyAuthRemoteDataSource = ShopifyAuthRemoteDataSource(),
+        tokenStorage: KeychainTokenStorage = KeychainTokenStorage()
+    ) {
+        self.dataSource = dataSource
+        self.tokenStorage = tokenStorage
+    }
+
+    // Fetches existing Shopify customer ID by email — used during login
+    func fetchShopifyCustomerID(email: String) async throws -> String? {
+        let result = try await dataSource.searchCustomer(byEmail: email)
+        guard let customer = result.customers.first else { return nil }
+        let shopifyID = String(customer.id)
+        tokenStorage.saveShopifyCustomerID(shopifyID)
+        return shopifyID
+    }
+
+    // Creates or finds customer — used during signup
     func createShopifyCustomer(fullName: String, email: String) async throws -> AppUser {
-        if let existing = try await findCustomer(byEmail: email) {
+        let result = try await dataSource.searchCustomer(byEmail: email)
+
+        if let existing = result.customers.first {
             print("Customer already exists in Shopify")
             let shopifyID = String(existing.id)
             tokenStorage.saveShopifyCustomerID(shopifyID)
             return AppUser(
                 id: tokenStorage.getFirebaseUID() ?? "",
-                email: existing.email,
+                email: existing.email ?? email,
                 fullName: [existing.first_name, existing.last_name]
                     .compactMap { $0 }
                     .filter { !$0.isEmpty }
                     .joined(separator: " "),
-                shopifyCustomerID: String(existing.id),
+                shopifyCustomerID: shopifyID,
                 alreadyExisted: true
             )
         }
+
         return try await createCustomer(fullName: fullName, email: email)
     }
-    
-    private func findCustomer(byEmail email: String) async throws -> ShopifyCustomerDTO? {
-        guard var components = URLComponents(string: "https://\(shopDomain)/admin/api/\(apiVersion)/customers/search.json") else {
-            throw URLError(.badURL)
-        }
-        components.queryItems = [URLQueryItem(name: "query", value: "email:\(email)")]
-        guard let url = components.url else { throw URLError(.badURL) }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue(adminToken, forHTTPHeaderField: "X-Shopify-Access-Token")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        print("Search response:\n\(prettyJSON(data))")
-        try Self.validate(response, data: data)
-        
-        return try JSONDecoder().decode(ShopifySearchResponseDTO.self, from: data).customers.first
-    }
-    
+
     private func createCustomer(fullName: String, email: String) async throws -> AppUser {
-        print("Entered....El")
         let parts = fullName.trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
         let firstName = parts.first ?? fullName
         let lastName = parts.dropFirst().joined(separator: " ")
-        
+
         let firebaseUID = tokenStorage.getFirebaseUID() ?? ""
         let tags = firebaseUID.isEmpty ? "ios-app" : "ios-app, firebase:\(firebaseUID)"
-        
-        print("Sending - name: '\(firstName) \(lastName)', email: '\(email)', firebaseUID: '\(firebaseUID)'")
-        
-        guard let url = URL(string: "https://\(shopDomain)/admin/api/\(apiVersion)/customers.json") else {
-            throw URLError(.badURL)
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue(adminToken, forHTTPHeaderField: "X-Shopify-Access-Token")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try JSONEncoder().encode(
-            ShopifyCreateCustomerRequestDTO(
-                customer: .init(
-                    first_name: firstName,
-                    last_name: lastName,
-                    email: email,
-                    tags: tags
-                )
-            )
+
+        let body = ShopifyCreateCustomerRequestDTO(
+            customer: .init(first_name: firstName, last_name: lastName, email: email, tags: tags)
         )
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        print("Create response:\n\(prettyJSON(data))")
-        try Self.validate(response, data: data)
-        
-        let customer = try JSONDecoder().decode(ShopifyCreateResponseDTO.self, from: data).customer
-        
-        let shopifyID = String(customer.id)
+
+        let result = try await dataSource.createCustomer(body)
+        let shopifyID = String(result.customer.id)
         tokenStorage.saveShopifyCustomerID(shopifyID)
-        
+
         return AppUser(
-            id: firebaseUID,        // ← from Keychain, not from use case
-            email: customer.email,
+            id: firebaseUID,
+            email: result.customer.email ?? email,
             fullName: fullName,
             shopifyCustomerID: shopifyID,
             alreadyExisted: false
         )
     }
-    
-    private static func validate(_ response: URLResponse, data: Data) throws {
-        guard let http = response as? HTTPURLResponse,
-              (200...299).contains(http.statusCode) else {
-            let body = String(data: data, encoding: .utf8) ?? "Unknown error"
-            throw URLError(.badServerResponse, userInfo: [NSLocalizedDescriptionKey: body])
-        }
-    }
-    
-    private func prettyJSON(_ data: Data) -> String {
-#if DEBUG
-        guard let object = try? JSONSerialization.jsonObject(with: data),
-              let prettyData = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted, .sortedKeys]),
-              let string = String(data: prettyData, encoding: .utf8) else {
-            return String(data: data, encoding: .utf8) ?? "Invalid JSON"
-        }
-        return string
-#else
-        return ""
-#endif
-    }
-}
-
-
-private struct ShopifySearchResponseDTO: Decodable {
-    let customers: [ShopifyCustomerDTO]
-}
-
-private struct ShopifyCustomerDTO: Decodable {
-    let id: Int
-    let email: String
-    let first_name: String?
-    let last_name: String?
-}
-
-private struct ShopifyCreateCustomerRequestDTO: Encodable {
-    struct CustomerBody: Encodable {
-        let first_name: String
-        let last_name: String
-        let email: String
-        let tags: String
-    }
-    let customer: CustomerBody
-}
-
-private struct ShopifyCreateResponseDTO: Decodable {
-    let customer: ShopifyCustomerDTO
 }
