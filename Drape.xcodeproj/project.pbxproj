@@ -10,6 +10,7 @@
 		3E41F39A2FF70D7300703397 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41F3992FF70D7300703397 /* CartView.swift */; };
 		3E41F39C2FF70D8600703397 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41F39B2FF70D8600703397 /* AccountView.swift */; };
 		3E41F39E2FF70D9E00703397 /* FavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41F39D2FF70D9E00703397 /* FavouriteView.swift */; };
+		3E6244132FF7E71000A77C55 /* ProductDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6244122FF7E71000A77C55 /* ProductDetailsScreen.swift */; };
 		3EFC6DFE2FEFE482002FBB9B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */; };
 		3EFC6E012FEFEB5F002FBB9B /* drape_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */; };
 		3EFC6E022FEFEB5F002FBB9B /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC6E002FEFEB5E002FBB9B /* onboarding.png */; };
@@ -100,6 +101,7 @@
 		3E41F3992FF70D7300703397 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		3E41F39B2FF70D8600703397 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		3E41F39D2FF70D9E00703397 /* FavouriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteView.swift; sourceTree = "<group>"; };
+		3E6244122FF7E71000A77C55 /* ProductDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsScreen.swift; sourceTree = "<group>"; };
 		3EFC6DFD2FEFE482002FBB9B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		3EFC6DFF2FEFEB5E002FBB9B /* drape_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drape_icon.png; sourceTree = "<group>"; };
 		3EFC6E002FEFEB5E002FBB9B /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding.png; sourceTree = "<group>"; };
@@ -271,6 +273,30 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		3E62440F2FF7E66B00A77C55 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3E6244102FF7E6B800A77C55 /* Presentation */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		3E6244102FF7E6B800A77C55 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3E6244112FF7E6CA00A77C55 /* view */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3E6244112FF7E6CA00A77C55 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3E6244122FF7E71000A77C55 /* ProductDetailsScreen.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		3EFC6DFC2FEFE44E002FBB9B /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +379,7 @@
 		41B0DB2F2FF5B2320083D212 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3E62440F2FF7E66B00A77C55 /* ProductDetails */,
 				3E41F38C2FF70CD900703397 /* Cart */,
 				3E41F38B2FF70CC600703397 /* Account */,
 				3E41F38A2FF70CBA00703397 /* Favourite */,
@@ -808,6 +835,7 @@
 				41AA27122FF6A55E00BF6DA0 /* FilterSheetView.swift in Sources */,
 				41B03EC92FEFE34200521C14 /* CustomTextField.swift in Sources */,
 				9FB047F02FF5F0A000F24615 /* HomeRemoteDataSource.swift in Sources */,
+				3E6244132FF7E71000A77C55 /* ProductDetailsScreen.swift in Sources */,
 				9FB047FA2FF5FB4E00F24615 /* HomeRepositoryProtocol.swift in Sources */,
 				41BC1FA32FF52E1300985A5F /* SearchRepositoryProtocol .swift in Sources */,
 				41BC1F9C2FF52D0000985A5F /* SearchEndpoint.swift in Sources */,
