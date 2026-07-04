@@ -343,6 +343,8 @@
 				3E6244122FF7E71000A77C55 /* ProductDetailsScreen.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
 		3EC1E4662FF5D5360047F42E /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
